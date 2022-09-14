@@ -1,0 +1,16 @@
+name: Learn Github Actions
+on: [push]
+jobs: 
+  check-bats-version:
+    runs-on: ubunto-lastest
+    steps: 
+      - name: Récupérer le code
+        uses: actions/checkout@v3
+      - name: Installer Node 14
+        uses: actions/setup-node@v3
+          with: 
+            node-versions: '14'
+      - name: Installer bats
+        run: npm install -g bats
+      - name: Retourner la version des bats
+        run: bats -v
